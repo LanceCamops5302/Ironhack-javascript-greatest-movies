@@ -59,6 +59,17 @@ function orderAlphabetically(order){
 
 // Iteration 4: All rates average - Get the average of all rates with 2 decimals
 
+function ratesAverage(anArray){
+  return anArray.reduce((a, c) =>{
+  return (a + c.rate);
+}, 0)
+}
+
+function ratesAvg(anArray){
+  return ((ratesAverage(anArray))/anArray.length).toFixed(2)
+}
+
+
 // Iteration 5: Drama movies - Get the average of Drama Movies
 
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
