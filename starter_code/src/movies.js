@@ -43,32 +43,45 @@ function howManyMovies(anArray) {
 
 function orderAlphabetically(order){
 
-    let alph = [...order];
+  let alph = [...order];
 
-  alph.sort(function (a, b){
-    if (b.title < a.title){
-      return 1
-    }
-    else if (a.title < b.title){
-      return -1
-    }
-  })
-  return alph.slice(0,20)
-  };
+alph.sort(function (a, b){
+  if (b.title < a.title){
+    return 1
+  }
+  else if (a.title < b.title){
+    return -1
+  }
+})
+  let top = alph.map((eachMovie)=>{
+    return eachMovie.title
+  });
+return top.splice(0,20)
+};
 
 
 // Iteration 4: All rates average - Get the average of all rates with 2 decimals
 
-function ratesAverage(anArray){
-  return anArray.reduce((a, c) =>{
-  return (a + c.rate);
-}, 0)
-}
+function ratesAverage(array){
 
-function ratesAvg(anArray){
-  return ((ratesAverage(anArray))/anArray.length).toFixed(2)
-}
+  if(array.length == 0){
+    return 0;
+  }
 
+  let total = array.reduce( (a, c) =>{
+    if(c.rate){
+      return a + c.rate;
+    }
+    else{
+      return a + 0;
+    }
+  }, 0);
+
+  let avgRate = (total / array.length).toFixed(2);
+  return Number(avgRate);
+
+
+}
 
 // Iteration 5: Drama movies - Get the average of Drama Movies
 
