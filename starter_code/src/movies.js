@@ -53,7 +53,7 @@ function orderAlphabetically(order){
       return -1
     }
   })
-  return alph
+  return alph.slice(0,20)
   };
 
 
@@ -72,6 +72,36 @@ function ratesAvg(anArray){
 
 // Iteration 5: Drama movies - Get the average of Drama Movies
 
+
+function dramaMoviesRate(anArray){
+
+  let dMovies= anArray.filter(function(movie){
+      return movie.genre.includes ('Drama');
+    });
+  
+    return dMovies.reduce((a, c) =>{
+    return (a + c.rate);
+  }, 0)
+  
+  }
+  function ratesAvg(dMovies){
+    return ((dramaMoviesRate(dMovies))/dMovies.length).toFixed(2)
+  }
+  
+
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
+
+function turnHoursToMinutes(anArray){
+
+  let minutes = [...anArray]
+
+
+
+
+
+  return minutes
+}
+
+
 
 // BONUS Iteration: Best yearly rate average - Best yearly rate average
