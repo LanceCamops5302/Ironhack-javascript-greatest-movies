@@ -85,35 +85,64 @@ function ratesAverage(array){
 
 // Iteration 5: Drama movies - Get the average of Drama Movies
 
-
 function dramaMoviesRate(anArray){
 
-  let dMovies= anArray.filter(function(movie){
-      return movie.genre.includes ('Drama');
-    });
+  let dMovies = anArray.filter(eachMovie =>{
+    return eachMovie.genre.includes('Drama')
+  })
   
-    return dMovies.reduce((a, c) =>{
-    return (a + c.rate);
-  }, 0)
+  let avgDMovie = ratesAverage(dMovies)
   
-  }
-  function ratesAvg(dMovies){
-    return ((dramaMoviesRate(dMovies))/dMovies.length).toFixed(2)
+    return avgDMovie
   }
   
 
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
 
+
 function turnHoursToMinutes(anArray){
 
-  let minutes = [...anArray]
-
-
-
-
-
-  return minutes
-}
+  let array = [...anArray];
+  
+  let time = array.map((eachMovie) => {
+  
+  let duration = eachMovie.duration;
+  
+  let minutes = 0;
+  let hours = 0;
+  let both = 0;
+  let add;
+  
+  if (duration.includes('h') && duration.includes('min')){
+    add = duration.replace('h', ' ').replace('min', ' ').trim();
+    let hours = Number(add.substring(0, add.indexOf(" ")));
+    let minutes = Number(add.substring(add.indexOf(" ") + 1));
+    console.log(hours + " " + minutes)
+    both = (hours * 60 + minutes);
+  }
+  
+  else if (duration.includes('h')) {
+    hours = Number(duration.substring(0, duration.indexOf("h")));
+    both = hours * 60;
+  }
+  else if (duration.includes('min')) {
+    minutes = Number(duration.substring(0, duration.indexOf("min")));
+    both = minutes;
+  }
+  
+  return {
+     title: eachMovie.title,
+     year: eachMovie.year,
+     director: eachMovie.director,
+     duration: both,
+     genre: eachMovie.genre,
+     rate: eachMovie.rate
+  }
+  })
+  
+  return time;
+  
+  }
 
 
 
